@@ -387,7 +387,9 @@ header {
   width: 50px;
   height: 50px;
 }
-
+.data-table td a {
+  color: var(--primary-dark);
+}
 .hover {
   display: flow-root;
 }
