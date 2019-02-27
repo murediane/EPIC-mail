@@ -48,14 +48,14 @@
                 </li>
                 <li>
                     <a href="sentmessage.html">
-                        <div class="side-option highlighted">
+                        <div class="side-option ">
                             <h1>sent </h1>
                         </div>
                     </a>
                 </li>
                 <li>
                     <a href="draft.html">
-                        <div class="side-option">
+                        <div class="side-option highlighted">
                             <h1>draft</h1>
                         </div>
                     </a>
@@ -79,24 +79,93 @@
                             <td>gloria</td>
                             <td><a href="./message.html"> Welcome to Andela</a> </td>
                             <td>11/12/2018</td>
-                            
+                            <td>
+                                    <img
+                            class="hover"
+                            src="../../assets/icons/envelope.png"
+                            alt="lg"
+                            title="send message"
+                          />
+                        </td>
+                            <td>
+                                    <img
+                                      onclick="openModal('delete-message')"
+                                      class="hover"
+                                      src="../../assets/icons/2.png"
+                                      alt="lg"
+                                      title="delete message"
+                                    />
+                            </td>
+                      
                         </tr>
                         <tr>
                             <td>gloria</td>
                             <td><a href="./message.html"> how are you doing</a> </td>
                             <td>11/12/2018</td>
-                            
+                            <td>
+                                    <img
+                            class="hover"
+                            src="../../assets/icons/envelope.png"
+                            alt="lg"
+                            title="send message"
+                          />
+                        </td>
+                            <td>
+                                    <img
+                                      onclick="openModal('delete-message')"
+                                      class="hover"
+                                      src="../../assets/icons/2.png"
+                                      alt="lg"
+                                      title="delete message"
+                                    />
+                            </td>
+                      
                         </tr>
                         <tr>
                             <td>gloria</td>
                             <td> <a href="./message.html" > school begins on monday</a></td>
                             <td>11/12/2018</td>
-                            
+                            <td>
+                                    <img
+                            class="hover"
+                            src="../../assets/icons/envelope.png"
+                            alt="lg"
+                            title="send message"
+                          />
+                        </td>
+                            <td>
+                                    <img
+                                      onclick="openModal('delete-message')"
+                                      class="hover"
+                                      src="../../assets/icons/2.png"
+                                      alt="lg"
+                                      title="delete message"
+                                    />
+                            </td>
+                      
                         </tr>
                         <tr>
                             <td>gloria</td>
                             <td> <a href="./message.html">  invitation to my wedding</a></td>
                             <td>11/12/2018</td>
+                            <td>
+                                    <img
+                            class="hover"
+                            src="../../assets/icons/envelope.png"
+                            alt="lg"
+                            title="send message"
+                          />
+                        </td>
+                            <td>
+                                    <img
+                                      onclick="openModal('delete-message')"
+                                      class="hover"
+                                      src="../../assets/icons/2.png"
+                                      alt="lg"
+                                      title="delete message"
+                                    />
+                            </td>
+                      
                             
                         </tr>
                         <tr>
@@ -105,6 +174,24 @@
                             welcome home
                                 </td>
                             <td>11/12/2018</td>
+                            <td>
+                                    <img
+                            class="hover"
+                            src="../../assets/icons/envelope.png"
+                            alt="lg"
+                            title="send message"
+                          />
+                        </td>
+                            <td>
+                                    <img
+                                      onclick="openModal('delete-message')"
+                                      class="hover"
+                                      src="../../assets/icons/2.png"
+                                      alt="lg"
+                                      title="delete message"
+                                    />
+                            </td>
+                      
                             
                         </tr>
                         
@@ -115,8 +202,29 @@
             </div>
         </div>
     </section>
-
     
+    <section class="modal change-dest" id="delete-message">
+            <div class="modal-header">
+              are you sure you want to delete this message
+              <img
+                onclick="closeModal('delete-message')"
+                src="../../assets/icons/2.png"
+                alt="lg"
+                title="Cancel"
+              />
+            </div>
+            <div class="modal-body">
+              
+              <a class="modal-submit" href="#">
+                <img
+                  class="fab-icon"
+                  src="../../assets/icons/2.png "
+                  alt="logo"
+                />
+                <p>delete</p>
+              </a>
+            </div>
+          </section>
 
     <section class="modal add-new" id="new-order">
         <div class="modal-header">
@@ -190,7 +298,6 @@
                 <img class="fab-icon" src="../../assets/icons/confirm.png " alt="logo" />
                 <p>submit</p>
             </a>
-            
         </div>
     </section>
 </body>
