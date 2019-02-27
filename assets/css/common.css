@@ -123,6 +123,7 @@ header {
   width: 20%;
   float: left;
   height: 600px;
+  background-color: whitesmoke;
 }
 #profile-box li {
   list-style: none;
@@ -137,37 +138,77 @@ header {
   overflow: hidden;
   position: fixed;
 }
-
+.top-nav {
+  width: var(--top-nav-width);
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  padding: 5px 0px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+}
+.top-nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  top: 0px;
+}
+.dropdown .user-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown h2 {
+  font-size: 15px;
+  font-weight: 800;
+  padding: 0px 5px;
+  color: var(--primary-dark);
+  text-transform: capitalize;
+  line-height: 40px;
+  font-style: italic;
+  text-align: center;
+}
 /* drop down content */
 
 .dropdown-content {
   display: none;
-  top: 40px;
+  top: 30px;
   right: 0px;
   min-width: 120px;
   position: absolute;
   justify-content: center;
   border-radius: 5px;
   flex-direction: column;
-  background-color: var(--primary-dark);
+  background-color: white;
   opacity: 0.8;
   box-shadow: 0px 8px 16px 0px gray;
   z-index: 1;
 }
-
 .dropdown-content a {
   text-decoration: none;
   padding: 10px;
   font-size: 15px;
   font-weight: 800;
-  color: #495057;
+  color: var(--primary);
   text-transform: capitalize;
   font-style: italic;
   text-align: center;
 }
 
 .dropdown-content a:hover {
-  background-color: var(--secondary);
+  background-color: whitesmoke;
 }
 
 .dropdown:hover .dropdown-content {
@@ -288,7 +329,7 @@ header {
 
 .lg-card {
   transition: 0.3s;
-  box-shadow: 2px 2px 8px rgb(236, 163, 163);
+  box-shadow: 2px 2px 8px rgb(211, 199, 199);
   width: 100%;
   margin: 1em 0.5em;
   border-radius: 0.5em;
@@ -308,7 +349,7 @@ header {
   border-collapse: separate;
   width: 100%;
   color: gray;
-  border: 1px solid rgb(12, 11, 11);
+  border: 1px none rgb(12, 11, 11);
   font-size: 100%;
   font-style: Helvetica;
   font-weight: 200;
@@ -318,13 +359,12 @@ header {
 .data-table td {
   text-align: center;
   padding: 8px;
+  text-transform: capitalize;
 }
 
 .data-table tr:nth-child(1) {
   background-color: white;
-  color: var(--text-color);
-  font-weight: bold;
-  text-transform: capitalize;
+  color: var(--primary);
 }
 
 .data-table tr:nth-child(even) {
