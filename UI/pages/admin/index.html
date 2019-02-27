@@ -20,7 +20,7 @@
 <section class="top-nav">
         <div class="top-nav-right">
     <div class="dropdown">
-            <h2 class="user-name">diane</h2>
+            <h2 class="user-name">Admin</h2>
             <div class="avatar-cont">
               <img
                 class="user-avatar"
@@ -42,21 +42,7 @@
                 <li>
                     <a href="index.html">
                         <div class="side-option ">
-                            <h1> inbox</h1>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="sentmessage.html">
-                        <div class="side-option highlighted">
-                            <h1>sent </h1>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="draft.html">
-                        <div class="side-option">
-                            <h1>draft</h1>
+                            <h1> Admin dashboard</h1>
                         </div>
                     </a>
                 </li>
@@ -75,52 +61,44 @@
             <div class="lg-card-content">
                 <div class="data-table">
                     <table>
-                        
-                            <td>gloria</td>
-                            <td><a href="./message.html"> Welcome to Andela</a> </td>
-                            <td>11/12/2018</td>
+                        <tr><th>group name</th>
+                            <th>number of members</th>
+                            <th>created on </th>
+                        </tr>
+                        <tr>
+                            <td>Andela</td>
+                            <td>12</td>
+                            <td>11/2/2019</td>
                             
                         </tr>
                         <tr>
-                            <td>gloria</td>
-                            <td><a href="./message.html"> how are you doing</a> </td>
-                            <td>11/12/2018</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>gloria</td>
-                            <td> <a href="./message.html" > school begins on monday</a></td>
-                            <td>11/12/2018</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>gloria</td>
-                            <td> <a href="./message.html">  invitation to my wedding</a></td>
-                            <td>11/12/2018</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>gloria</td>
-                            <td>
-                            welcome home
-                                </td>
-                            <td>11/12/2018</td>
-                            
-                        </tr>
-                        
-                            
-                        </tr>
+                                <td>Andela</td>
+                                <td>12</td>
+                                <td>11/2/2019</td>
+                                
+                            </tr>
+                            <tr>
+                                    <td>Andela</td>
+                                    <td>12</td>
+                                    <td>11/2/2019</td>
+                                    
+                                </tr>
+                                <tr>
+                                        <td>Andela</td>
+                                        <td>12</td>
+                                        <td>11/2/2019</td>
+                                        
+                                    </tr>
+                      
                     </table>
                 </div>
             </div>
         </div>
     </section>
 
-    
-
     <section class="modal add-new" id="new-order">
         <div class="modal-header">
-            Create a new message
+            Create a new group
             <img onclick="closeModal('new-order')" src="../../assets/icons/2.png" alt="lg" title="Cancel" />
         </div>
         <div class="modal-body">
@@ -128,41 +106,31 @@
                 <div class="input-group-addon">
                     <img src="../../assets/icons/about-us.png" alt="" />
                 </div>
-                <input class="modal-form-control" placeholder="to" />
+                <input class="modal-form-control" placeholder="group name" />
             </div>
             <div class="input-group">
                 <div class="input-group-addon">
                     <img src="../../assets/icons/employee.png" alt="" />
                 </div>
-                <input class="modal-form-control" placeholder="from" />
+                <input class="modal-form-control" placeholder="member" />
             </div>
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <img src="../../assets/icons/email.png" alt="" />
-                </div>
-               ,<textarea name="message" class="" cols="50" rows="10"></textarea>
-            </div>
-            
+        
             
             <a class="modal-submit" href="#">
                 <img class="fab-icon" src="../../assets/icons/confirm.png " alt="logo" />
-                <p>send</p>
+                <p>create</p>
             </a>
-            <a class="modal-submit" href="#">
-                    <img class="fab-icon" src="../../assets/icons/edit.png " alt="logo" />
-                    <p>draft</p>
-                </a>
         </div>
     </section>
 
 
     <a class="fab" href="#" onclick="openModal('new-order')">
-        <img class="fab-icon" src="../../assets/icons/envelope (1).png" alt="logo" />
-        <p>compose</p>
+        <img class="fab-icon" src="../../assets/icons/about-us.png" alt="logo" />
+        <p>create new group</p>
     </a>
     <section class="modal add-new" id="new-order">
         <div class="modal-header">
-            Create a new email
+            Create a new group
             <img onclick="closeModal('new-order')" src="../../assets/icons/2.png" alt="lg" title="Cancel" />
         </div>
         <div class="modal-body">
