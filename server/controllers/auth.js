@@ -3,7 +3,7 @@ import { users } from '../models';
 import bcrypt from 'bcrypt';
 import Jwt from 'jsonwebtoken';
 import _ from 'lodash';
-const createAuth = async (req, res) => {
+const login = async (req, res) => {
   const { error } = validateAuth(req.body);
 
   if (error) {
@@ -18,4 +18,4 @@ const createAuth = async (req, res) => {
   const token = Jwt.sign({ _email: user._email }, 'jwtPrivateKey');
   res.send({ status: 201, token });
 };
-export { createAuth };
+export { login };
