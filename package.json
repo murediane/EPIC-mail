@@ -6,13 +6,12 @@
   "author": "murekatete diane",
   "license": "MIT",
   "scripts": {
-    "server": "clear && cross-env NODE_ENV=dev nodemon --exec babel-node ./server/index.js",
-    "build": "babel server -d server/dist",
+    "server": "cross-env NODE_ENV=dev nodemon --exec babel-node ./server/index.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test": "clear && NODE_ENV=test nyc --reporter=text --reporter=lcov mocha --timeout 25000 --require babel-register {server/tests,server/tests/**}/*.spec.js --exit || true"
   },
   "engines": {
-    "node": "8.12.0"
+    "node": "10.15.2"
   },
   "repository": {
     "type": "git"
@@ -21,12 +20,14 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "bcrypt": "^3.0.4",
     "bcrypt-nodejs": "0.0.3",
     "cross-env": "5.2.0",
     "dotenv": "^6.1.0",
     "express": "4.16.4",
     "joi": "^14.0.4",
     "jsonwebtoken": "8.3.0",
+    "lodash": "^4.17.11",
     "morgan": "1.9.1",
     "multer": "1.4.1",
     "nodemon": "^1.18.6",
@@ -36,6 +37,7 @@
     "babel-eslint": "^10.0.1",
     "chai": "4.2.0",
     "chai-http": "^4.2.0",
+    "config": "^3.0.1",
     "coveralls": "^3.0.2",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
