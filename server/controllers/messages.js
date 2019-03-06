@@ -9,4 +9,7 @@ const createMessage = (req, res) => {
   messages.push(message);
   return res.send({ status: 201, message });
 };
-export { createMessage };
+const getAllMessages = (req, res) => {
+  res.send({ status: 200, messages });
+};
+export { createMessage, getAllMessages };
