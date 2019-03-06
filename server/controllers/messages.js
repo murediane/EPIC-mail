@@ -20,4 +20,19 @@ const getSentMessages = (req, res) => {
   const sent = messages.filter(m => m.status === 'sent');
   return res.send(sent);
 };
-export { createMessage, getAllMessages, getUnreadMessages, getSentMessages };
+const getMessage = (req, res) => {
+  const { id } = req.params;
+  const message = messages.find(m => m.id === parseInt(id));
+  if (!message)
+    return res
+      .status(404)
+      .send({ message: 'the message with a given id does not exist' });
+  res.send(message);
+};
+export {
+  createMessage,
+  getAllMessages,
+  getUnreadMessages,
+  getSentMessages,
+  getMessage
+};
