@@ -12,4 +12,8 @@ const createMessage = (req, res) => {
 const getAllMessages = (req, res) => {
   res.send({ status: 200, messages });
 };
-export { createMessage, getAllMessages };
+const getUnreadMessages = (req, res) => {
+  const unread = messages.filter(m => m.status === 'unread');
+  return res.send(unread);
+};
+export { createMessage, getAllMessages, getUnreadMessages };
