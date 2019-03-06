@@ -29,10 +29,19 @@ const getMessage = (req, res) => {
       .send({ message: 'the message with a given id does not exist' });
   res.send(message);
 };
+const deleteMessage = (req, res) => {
+  const { id } = req.params;
+  const message = messages.find(m => m.id === parseInt(id));
+  if (!message) return res.status(404).send({ msg: 'invalid id' });
+  const index = messages.indexOf(message);
+  messages.splice(index, 1);
+  return res.send({ status: 200, msg: 'message deleted' });
+};
 export {
   createMessage,
   getAllMessages,
   getUnreadMessages,
   getSentMessages,
-  getMessage
+  getMessage,
+  deleteMessage
 };
