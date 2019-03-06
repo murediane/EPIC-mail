@@ -4,7 +4,8 @@ import {
   getAllMessages,
   getUnreadMessages,
   getSentMessages,
-  getMessage
+  getMessage,
+  deleteMessage
 } from '../controllers/messages';
 
 const route = Router();
@@ -16,4 +17,5 @@ route.get(`${entryPoint}`, getAllMessages);
 route.get(`${entryPoint}/unread`, getUnreadMessages);
 route.get(`${entryPoint}/sent`, getSentMessages);
 route.get(`${entryPoint}/:id`, getMessage);
+route.delete(`${entryPoint}/:id`, deleteMessage);
 export default route;
