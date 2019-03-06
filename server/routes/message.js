@@ -1,10 +1,10 @@
 import Router from 'express';
-import { createMessage } from '../controllers/messages';
+import { createMessage, getAllMessages } from '../controllers/messages';
 
 const route = Router();
-const entrypoint = '/messages';
-// create message route
+const entryPoint = '/messages';
+//  message routes
 
-route.post(`${entrypoint}`, createMessage);
-// route.post(`${entrypoint}/login`, login);
+route.post(`${entryPoint}`, createMessage);
+route.get(`${entryPoint}`, getAllMessages);
 export default route;
