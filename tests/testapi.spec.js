@@ -139,7 +139,7 @@ describe('POST a user', () => {
       .send(fakeUsers)
       .end((err, res) => {
         res.should.be.a('object');
-        res.should.have.status(200);
+        res.should.have.status(400);
         res.body.should.have.property('message', 'user already exist');
         done();
       });
@@ -152,7 +152,7 @@ describe('POST an invalid user', () => {
       .post('/api/V1/auth/signup')
       .send(fakeUsers2)
       .end((err, res) => {
-        res.should.have.status(404);
+        res.should.have.status(400);
         done();
       });
   });
@@ -165,7 +165,7 @@ describe('POST a login', () => {
       .send(fakeLogin)
       .end((err, res) => {
         res.should.be.a('object');
-        res.should.have.status(200);
+        res.should.have.status(400);
         res.body.should.have.property('message', 'invalid email or password');
         done();
       });
@@ -178,7 +178,7 @@ describe('POST an invalid login', () => {
       .post('/api/V1/auth/login')
       .send(fakeLogin2)
       .end((err, res) => {
-        res.should.have.status(404);
+        res.should.have.status(400);
         done();
       });
   });
