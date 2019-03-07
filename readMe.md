@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.org/murediane/EPIC-mail.svg?branch=develop)](https://travis-ci.org/murediane/EPIC-mail)
+[![Coverage Status](https://coveralls.io/repos/github/murediane/EPIC-mail/badge.svg?branch=bg-test-endpoints-164432374)](https://coveralls.io/github/murediane/EPIC-mail?branch=bg-test-endpoints-164432374)
+[![Maintainability](https://api.codeclimate.com/v1/badges/32af42942c13104511d7/maintainability)](https://codeclimate.com/github/murediane/EPIC-mail/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/32af42942c13104511d7/test_coverage)](https://codeclimate.com/github/murediane/EPIC-mail/test_coverage)
 
 # Epic-Mail
 
