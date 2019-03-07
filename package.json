@@ -8,7 +8,7 @@
   "scripts": {
     "server": "cross-env NODE_ENV=dev nodemon --exec babel-node ./server/index.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "test": "clear && NODE_ENV=test nyc --reporter=text --reporter=lcov mocha --timeout 25000 --require babel-register {server/tests,server/tests/**}/*.spec.js --exit || true"
+    "test": "nyc --reporter=text --reporter=lcov mocha --timeout 25000 --require babel-register {tests,tests/**}/*.spec.js --exit"
   },
   "engines": {
     "node": "10.15.2"
