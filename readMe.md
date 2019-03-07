@@ -1,4 +1,4 @@
-https://travis-ci.org/murediane/EPIC-mail.svg?branch=develop
+[![Build Status](https://travis-ci.org/murediane/EPIC-mail.svg?branch=develop)](https://travis-ci.org/murediane/EPIC-mail)
 
 # Epic-Mail
 
