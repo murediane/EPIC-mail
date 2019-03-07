@@ -31,5 +31,7 @@ contains database or data structure containing data
 -routes
 contains all URL to the endpoints
 
+to test if the enpoint works make sure you have node js installed and run npm run server command
+
 there is another folder called test
 it contains all the test for the apis
