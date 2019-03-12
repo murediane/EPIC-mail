@@ -1,6 +1,8 @@
+
 import chai from "chai";
 import chaiHttp from "chai-http";
 import server from "../server";
+
 import {
   fakeMessages,
   fakeMessages2,
@@ -9,6 +11,7 @@ import {
   fakeMessages3,
   fakeUsers2,
   fakeLogin2
+
 } from "./testData";
 const should = chai.should();
 chai.use(chaiHttp);
@@ -21,11 +24,26 @@ describe("/GET message", () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a("object");
+=======
+} from './testData';
+const should = chai.should();
+chai.use(chaiHttp);
+
+describe('/GET message', () => {
+  it('should get all the message', done => {
+    chai
+      .request(server)
+      .get('/api/V1/messages')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+>>>>>>> develop
 
         done();
       });
   });
 });
+
 
 describe("/GET unread message", () => {
   it("should get all unread message", done => {
@@ -36,11 +54,13 @@ describe("/GET unread message", () => {
         res.should.have.status(200);
         res.body.should.be.a("array");
 
+
         done();
       });
   });
 });
-describe("/GET sent message", () => {
+
+escribe("/GET sent message", () => {
   it("should get all sent message", done => {
     chai
       .request(server)
@@ -53,6 +73,7 @@ describe("/GET sent message", () => {
       });
   });
 });
+
 describe("POST message", () => {
   it(" it should return a valid object", done => {
     chai
@@ -80,16 +101,20 @@ describe("POST message", () => {
         res.body.message.status.should.be.a(
           "string",
           "Expected the status to be a string"
+
         );
         done();
       });
   });
 });
+
 describe("POST an invalid message", () => {
   it(" it should return an error", done => {
     chai
       .request(server)
       .post("/api/V1/messages")
+
+
       .send(fakeMessages3)
       .end((err, res) => {
         console.log(res.body);
@@ -98,6 +123,7 @@ describe("POST an invalid message", () => {
       });
   });
 });
+
 describe("GET messages/: id message", () => {
   it("should display message with a specific id", () => {
     chai
@@ -117,10 +143,13 @@ describe("GET messages/: id message", () => {
         res.body.should.have.property(
           "message",
           "the message with a given id does not exist"
+
+p
         );
       });
   });
 });
+
 describe("delete messages/: id message", () => {
   it("should display message with a specific id", () => {
     chai
@@ -141,15 +170,18 @@ describe("POST a user", () => {
         res.should.be.a("object");
         res.should.have.status(400);
         res.body.should.have.property("message", "user already exist");
+
         done();
       });
   });
 });
+
 describe("POST an invalid user", () => {
   it(" it should return an error", done => {
     chai
       .request(server)
       .post("/api/V1/auth/signup")
+
       .send(fakeUsers2)
       .end((err, res) => {
         res.should.have.status(400);
@@ -157,6 +189,7 @@ describe("POST an invalid user", () => {
       });
   });
 });
+
 describe("POST a login", () => {
   it(" it should return a valid object", done => {
     chai
@@ -167,15 +200,18 @@ describe("POST a login", () => {
         res.should.be.a("object");
         res.should.have.status(400);
         res.body.should.have.property("message", "invalid email or password");
+
         done();
       });
   });
 });
+
 describe("POST an invalid login", () => {
   it(" it should return an error", done => {
     chai
       .request(server)
       .post("/api/V1/auth/login")
+
       .send(fakeLogin2)
       .end((err, res) => {
         res.should.have.status(400);

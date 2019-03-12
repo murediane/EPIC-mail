@@ -27,7 +27,7 @@ const getMessage = (req, res) => {
     return res
       .status(404)
       .send({ message: 'the message with a given id does not exist' });
-  res.send(message);
+  return res.send(message);
 };
 const deleteMessage = (req, res) => {
   const { id } = req.params;
