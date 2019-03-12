@@ -67,7 +67,7 @@ td,
 button {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: "Gotham-Light";
+  font-family: 'Gotham-Light';
   font-weight: inherit;
   margin: 0%;
   padding: 0%;
@@ -76,7 +76,7 @@ button {
 a {
   text-decoration: none;
   color: var(--main-white);
-  font-family: "Gotham-Medium";
+  font-family: 'Gotham-Medium';
 }
 
 /* Constant definitions */
@@ -120,55 +120,52 @@ header {
 
 /**** This is the Profile Box ****/
 #profile-box {
-  width: 15%;
+  width: 20%;
   float: left;
   height: 600px;
   background-color: whitesmoke;
+  padding-left: 20px;
 }
 #profile-box li {
   list-style: none;
   height: 60px;
+  font-size: 40px;
 }
 
 /******Global******/
 
 .container {
-  width: 80%;
+  width: 96%;
   margin: auto;
   overflow: hidden;
   position: fixed;
 }
-.top-nav {
-  width: var(--top-nav-width);
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  padding: 5px 0px;
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: row;
-  align-items: center;
-}
+
 .top-nav-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  float: right;
+  padding: 0px 0px;
 }
 .dropdown {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row-reverse;
-  top: 0px;
+  bottom: 0px;
+}
+.user-name {
+  position: relative;
+  bottom: 55px;
 }
 .dropdown .user-avatar {
   height: 40px;
   width: 40px;
   border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  bottom: 30px;
 }
 .dropdown h2 {
   font-size: 15px;
@@ -181,10 +178,15 @@ header {
   text-align: center;
 }
 /* drop down content */
-
+.branding {
+  display: none;
+  top: 10px;
+  left: 20px;
+  float: left;
+}
 .dropdown-content {
   display: none;
-  top: 30px;
+  top: 18px;
   right: 0px;
   min-width: 120px;
   position: absolute;
@@ -247,13 +249,13 @@ header {
 .side-option h1 {
   padding: 0px 5px;
   font-family: sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
   /* text-transform: capitalize; */
   text-align: center;
   text-align: center;
   color: rgb(66, 65, 65);
-  text-shadow: 2px 2px 8px #111;
+  /* text-shadow: 2px 2px 8px #111; */
 }
 
 .highlighted {
@@ -276,55 +278,6 @@ header {
   overflow-x: hidden;
 }
 
-.overview {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  width: var(--overview-width);
-  margin: 0px;
-  justify-content: space-evenly;
-}
-
-.overview .head-line {
-  width: 100%;
-  height: 70%;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.overview .head-line p {
-  font-size: 100%;
-  color: var(--primary-dark);
-  font-family: Cormorant Garamond;
-  text-transform: capitalize;
-  font-style: italic;
-}
-
-.transit {
-  width: 25px;
-  height: 25px;
-  padding-right: 10px;
-}
-
-.deliver {
-  width: 20px;
-  height: 20px;
-  padding-right: 10px;
-}
-
-.overview .data {
-  width: 100%;
-  font-weight: 900;
-  font-size: 150%;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* card styles */
 
 .lg-card {
@@ -333,10 +286,6 @@ header {
   width: 100%;
   margin: 1em 0.5em;
   border-radius: 0.5em;
-}
-
-.lg-card .lg-card-content {
-  padding: 0.5em;
 }
 
 /* Tabular data components' styles  */
@@ -363,12 +312,10 @@ header {
 }
 
 .data-table tr:nth-child(1) {
-  background-color: white;
   color: var(--primary);
 }
 
 .data-table tr:nth-child(even) {
-  background-color: #fcf8f7ea;
   color: var(--primary);
 }
 
@@ -461,13 +408,18 @@ header {
 
 /* media queries for mobile extra small screen (mobile phones) */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   body {
     overflow-x: hidden;
   }
 
-  .top-nav {
+  .top-nav-right {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    flex-direction: row;
+    float: right;
+    padding: 0px 0px;
   }
   .top-nav-left {
     display: flex;
@@ -478,5 +430,12 @@ header {
   .content {
     margin-left: 0px;
     padding: 0px;
+  }
+
+  .container {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+    position: fixed;
   }
 }
