@@ -66,13 +66,13 @@ describe('POST message', () => {
           'string',
           'Expected the subject to be a string'
         );
-        res.body.message.should.have.property('parentId');
-        res.body.message.parentId.should.be.a(
+        res.body.message.should.have.property('parentMessageId');
+        res.body.message.parentMessageId.should.be.a(
           'number',
-          'Expected parentId to be a number'
+          'Expected parentMessageId to be a number'
         );
-        res.body.message.should.have.property('newMessage');
-        res.body.message.newMessage.should.be.a(
+        res.body.message.should.have.property('message');
+        res.body.message.message.should.be.a(
           'string',
           'Expected the message to be a string'
         );
