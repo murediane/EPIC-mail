@@ -32,10 +32,10 @@ const validateMessage = message => {
     subject: Joi.string()
       .min(3)
       .required(),
-    newMessage: Joi.string()
+    message: Joi.string()
       .min(5)
       .required(),
-    parentId: Joi.number()
+    parentMessageId: Joi.number()
       .min(1)
       .required(),
     status: Joi.string()

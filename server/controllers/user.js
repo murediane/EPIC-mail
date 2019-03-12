@@ -20,7 +20,11 @@ const createUser = async (req, res) => {
       'jwtPrivateKey'
     );
     await users.push(user);
-    return res.status(201).json({ status: 201, token });
+    // const data ={}
+    return res.status(201).json({
+      status: 201,
+      data: [{ token }]
+    });
   } catch (error) {
     if (error.details) {
       return res.status(400).json({ message: error.details[0].message });

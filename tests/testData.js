@@ -9,13 +9,13 @@ const fakeMessages = {
 
 const fakeMessages2 = {
   subject: 'Greetings',
-  newMessage: 'hello my friend',
-  parentId: 1,
+  message: 'hello my friend',
+  parentMessageId: 1,
   status: 'sent'
 };
 const fakeMessages3 = {
   subject: 'Greetings',
-  newMessage: 'hello my friend',
+  Message: 'hello my friend',
   status: 'sent'
 };
 
