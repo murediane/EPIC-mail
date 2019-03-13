@@ -1,6 +1,6 @@
 import Router from 'express';
 import { login, createUser } from '../controllers/auth';
-import { userValidate, validateAuth } from '../middleware/validatedata';
+import { userValidate, validateAuth } from '../middleware/validateData';
 
 const router = Router();
 const entry = '/auth';
