@@ -1,6 +1,7 @@
 import Jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { users } from '../models';
+
 const createUser = async (req, res) => {
   try {
     const user = { id: users.length + 1, ...req.body };
@@ -8,9 +9,9 @@ const createUser = async (req, res) => {
     user.password = await bcrypt.hash(user.password, salt);
     const token = Jwt.sign(
       {
-        _email: user._email,
-        _firstName: user._firstName,
-        _lastName: user._lastName
+        _email: user.email,
+        _firstName: user.firstName,
+        _lastName: user.lastName
       },
       'jwtPrivateKey'
     );
@@ -27,7 +28,7 @@ const createUser = async (req, res) => {
 };
 const login = async (req, res) => {
   try {
-    const user = await users.find(u => u.email === req.body.email);
+    const user = await users.find(findUser => findUser.email === req.body.email);
     const token = await Jwt.sign({ email: user.email }, 'jwtPrivateKey');
     return res.status(200).json({ status: 200, data: [{ token }] });
   } catch (error) {

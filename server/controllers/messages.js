@@ -14,7 +14,7 @@ const getUnreadMessages = (req, res) => {
 };
 const getSentMessages = (req, res) => {
   const sent = messages.filter(findMessage => findMessage.status === 'sent');
-  return res.send(sent);
+  return res.send({ status: 200, data: sent });
 };
 const getMessage = (req, res) => {
   const { id } = req.params;
@@ -25,6 +25,7 @@ const getMessage = (req, res) => {
       .send({ message: 'the message with a given id does not exist' });
   return res.send({ status: 200, data: message });
 };
+
 const deleteMessage = (req, res) => {
   const { id } = req.params;
   const message = messages.find(findMessage => findMessage.id === parseInt(id));
