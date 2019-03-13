@@ -51,4 +51,4 @@ it contains all the test for the apis
 
 # to test the project clone it and install package.json,after run npm run server
 
-for TDD run npm run test
+the command to run test is: run npm run test
