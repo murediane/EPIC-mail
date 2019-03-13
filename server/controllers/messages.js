@@ -1,10 +1,6 @@
-import { validateMessage } from '../helpers/validator';
 import { messages } from '../models';
 
 const createMessage = (req, res) => {
-  const { error } = validateMessage(req.body);
-
-  if (error) return res.status(404).send(error.details[0].message);
   const data = { id: messages.length + 1, createdOn: new Date(), ...req.body };
   messages.push(data);
   return res.send({ status: 201, data });

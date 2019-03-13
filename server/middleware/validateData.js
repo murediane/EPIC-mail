@@ -28,6 +28,7 @@ const validateAuth = async (req, res, next) => {
       .json({ status: 401, message: 'invalid email or password' });
   }
 };
+
 const validateNewMessage = async (req, res, next) => {
   try {
     await validateMessage(req.body);
