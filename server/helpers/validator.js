@@ -1,36 +1,29 @@
 import Joi from 'joi';
+
 const validateUser = user => {
   const schema = {
     firstName: Joi.string()
       .min(3)
       .required(),
     lastName: Joi.string()
-      .min(5)
+      .regex(/^[a-zA-Z ]/)
       .required(),
     email: Joi.string()
-      .min(10)
+      .regex(
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
       .required(),
     password: Joi.string()
-      .min(8)
+      .regex(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/)
       .required()
   };
   return Joi.validate(user, schema);
 };
-const validateAuth = auth => {
-  const schema = {
-    email: Joi.string()
-      .min(10)
-      .required(),
-    password: Joi.string()
-      .min(8)
-      .required()
-  };
-  return Joi.validate(auth, schema);
-};
+
 const validateMessage = message => {
   const schema = {
     subject: Joi.string()
-      .min(3)
+      .regex(/^[a-zA-Z ]/)
       .required(),
     message: Joi.string()
       .min(5)
@@ -44,4 +37,4 @@ const validateMessage = message => {
   };
   return Joi.validate(message, schema);
 };
-export { validateUser, validateAuth, validateMessage };
+export { validateUser, validateMessage };

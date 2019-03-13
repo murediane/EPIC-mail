@@ -1,4 +1,5 @@
 import Router from 'express';
+import { validateNewMessage } from '../middleware/validateData';
 import {
   createMessage,
   getAllMessages,
@@ -10,9 +11,9 @@ import {
 
 const route = Router();
 const entryPoint = '/messages';
-//  message routes
+// message routes
 
-route.post(`${entryPoint}`, createMessage);
+route.post(`${entryPoint}`, validateNewMessage, createMessage);
 route.get(`${entryPoint}`, getAllMessages);
 route.get(`${entryPoint}/unread`, getUnreadMessages);
 route.get(`${entryPoint}/sent`, getSentMessages);
