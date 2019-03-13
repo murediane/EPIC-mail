@@ -1,10 +1,11 @@
 import Router from 'express';
-import { createUser } from '../controllers/user';
-import { login } from '../controllers/auth';
+import { login, createUser } from '../controllers/auth';
+import { userValidate, validateAuth } from '../middleware/validateData';
+
 const router = Router();
 const entry = '/auth';
 // create authentication route
 
-router.post(`${entry}/signup`, createUser);
-router.post(`${entry}/login`, login);
+router.post(`${entry}/signup`, userValidate, createUser);
+router.post(`${entry}/login`, validateAuth, login);
 export default router;

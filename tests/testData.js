@@ -23,19 +23,18 @@ const fakeUsers = {
   email: 'murediana@gmail.com',
   firstName: 'Gloria',
   lastName: 'atete',
-  password: 'diane123'
+  password: 'Diane123'
 };
 const fakeUsers2 = {
   email: 'murediana@gmail.com',
   firstName: 'Gloria',
-  password: 'diane123'
+  password: 'Diane123'
 };
 const fakeLogin = {
   email: 'murediana@gmail.com',
-  password: 'diane123'
+  password: 'Diane123'
 };
 const fakeLogin2 = {
-  email: 'murediana@gmail.com',
   password: 'diane123',
   firstName: 'Gloria'
 };

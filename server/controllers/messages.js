@@ -1,41 +1,38 @@
-import { validateMessage } from '../helpers/validator';
 import { messages } from '../models';
 
 const createMessage = (req, res) => {
-  const { error } = validateMessage(req.body);
-
-  if (error) return res.status(404).send(error.details[0].message);
-  const message = { id: messages.length + 1, createdOn: new Date(), ...req.body };
-  messages.push(message);
-  return res.send({ status: 201, message });
+  const data = { id: messages.length + 1, createdOn: new Date(), ...req.body };
+  messages.push(data);
+  return res.send({ status: 201, data });
 };
 const getAllMessages = (req, res) => {
-  res.send({ status: 200, messages });
+  res.send({ status: 200, data: messages });
 };
 const getUnreadMessages = (req, res) => {
-  const unread = messages.filter(m => m.status === 'unread');
+  const unread = messages.filter(findMessage => findMessage.status === 'unread');
   return res.send(unread);
 };
 const getSentMessages = (req, res) => {
-  const sent = messages.filter(m => m.status === 'sent');
-  return res.send(sent);
+  const sent = messages.filter(findMessage => findMessage.status === 'sent');
+  return res.send({ status: 200, data: sent });
 };
 const getMessage = (req, res) => {
   const { id } = req.params;
-  const message = messages.find(m => m.id === parseInt(id));
+  const message = messages.find(findMessage => findMessage.id === parseInt(id));
   if (!message)
     return res
       .status(404)
       .send({ message: 'the message with a given id does not exist' });
-  return res.send(message);
+  return res.send({ status: 200, data: message });
 };
+
 const deleteMessage = (req, res) => {
   const { id } = req.params;
-  const message = messages.find(m => m.id === parseInt(id));
+  const message = messages.find(findMessage => findMessage.id === parseInt(id));
   if (!message) return res.status(404).send({ msg: 'invalid id' });
   const index = messages.indexOf(message);
   messages.splice(index, 1);
-  return res.send({ status: 200, msg: 'message deleted' });
+  return res.send({ status: 200, message: 'message deleted' });
 };
 export {
   createMessage,
