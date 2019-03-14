@@ -1,0 +1,149 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Epic mail",
+    "description": "api",
+    "license": {
+      "name": "MIT",
+      "url": ""
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Messages",
+      "description": "API for the messages in the application"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/messages": {
+      "post": {
+        "tags": ["message"],
+        "description": "Create new message in system",
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "description": "message that we want to create",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New message is created",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["messages"],
+        "summary": "Get all messages in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      }
+    },
+    "/messages/{messageId}": {
+      "parameters": [
+        {
+          "name": "messageId",
+          "in": "path",
+          "required": true,
+          "description": "ID of message that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["messages"],
+        "summary": "Get message with given ID",
+        "responses": {
+          "200": {
+            "description": "message is found",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete message with given ID",
+        "tags": ["message"],
+        "responses": {
+          "200": {
+            "description": "message is deleted",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "User": {
+      "required": ["email", "_id"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "type": "string"
+      },
+      "firstName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      },
+      "passWord": {
+        "type": "string"
+      }
+    }
+  },
+  "Users": {
+    "type": "array",
+    "$ref": "#/definitions/User"
+  },
+  "message": {
+    "required": ["message", "_id"],
+    "properties": {
+      "_id": {
+        "type": "string",
+        "uniqueItems": true
+      },
+      "createdOn": {
+        "type": "string"
+      },
+      "type": "string"
+    },
+
+    "message": {
+      "type": "string"
+    }
+  },
+
+  "Messages": {
+    "type": "array",
+    "$ref": "#/definitions/message"
+  }
+}
