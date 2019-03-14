@@ -38,16 +38,15 @@ to test if the enpoint works make sure you have node js installed and run npm ru
 
 there is another folder called test
 it contains all the test for the apis
-| api number | Urls |
-| ---------- : |:-----------------: |
-| 1 | POST API/V1/auth/signup |
-| 2 | POST api/v1/auth/login |  
-| 3 | POST api/v1/messages |  
-| 4 | Get api/v1/messages |
-| 5 |GET api/v1/messages/:Id |
-| 6 |GET api/v1/messages/sent |
-| 7 |GET api/v1/messages/unread|
-| 8 |delete api/v1/messages/:id|
+api Urls
+POST API/V1/auth/signup
+POST api/v1/auth/login  
+POST api/v1/messages  
+Get api/v1/messages
+GET api/v1/messages/:Id
+GET api/v1/messages/sent
+GET api/v1/messages/unread
+delete api/v1/messages/:id
 
 # to test the project clone it and install package.json,after run npm run server
 
