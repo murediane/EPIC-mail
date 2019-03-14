@@ -15,6 +15,14 @@
     {
       "name": "Messages",
       "description": "API for the messages in the application"
+    },
+    {
+      "name": "login",
+      "description": "API for the login in the application"
+    },
+    {
+      "name": "user",
+      "description": "API for the signup in the application"
     }
   ],
   "schemes": ["http"],
@@ -92,58 +100,109 @@
           }
         }
       }
-    }
-  },
+    },
 
-  "definitions": {
-    "User": {
-      "required": ["email", "_id"],
+    "/auth": {
+      "post": {
+        "tags": ["login"],
+        "description": "Create new login in system",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "body",
+            "description": "login that we want to create",
+            "schema": {
+              "$ref": "#/definitions/users"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New login  is created",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "authentication": {
+      "post": {
+        "tags": ["signup"],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "Signup",
+            "in": "body",
+            "description": "new user that we want to create",
+            "schema": {
+              "$ref": "#/definitions/users"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New user  is created",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+
+    "definitions": {
+      "User": {
+        "required": ["email", "_id"],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "email": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "passWord": {
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    },
+    "message": {
+      "required": ["message", "_id"],
       "properties": {
         "_id": {
           "type": "string",
           "uniqueItems": true
         },
-        "email": {
-          "type": "string",
-          "uniqueItems": true
+        "createdOn": {
+          "type": "string"
         },
         "type": "string"
       },
-      "firstName": {
-        "type": "string"
-      },
-      "lastName": {
-        "type": "string"
-      },
-      "passWord": {
+
+      "message": {
         "type": "string"
       }
-    }
-  },
-  "Users": {
-    "type": "array",
-    "$ref": "#/definitions/User"
-  },
-  "message": {
-    "required": ["message", "_id"],
-    "properties": {
-      "_id": {
-        "type": "string",
-        "uniqueItems": true
-      },
-      "createdOn": {
-        "type": "string"
-      },
-      "type": "string"
     },
 
-    "message": {
-      "type": "string"
+    "Messages": {
+      "type": "array",
+      "$ref": "#/definitions/message"
     }
-  },
-
-  "Messages": {
-    "type": "array",
-    "$ref": "#/definitions/message"
   }
 }
