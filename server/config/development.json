@@ -1,0 +1,3 @@
+{
+  "DB_URL": "postgres://postgres:diane16632@localhost:3700/epic_mail"
+}
