@@ -26,7 +26,7 @@ const createTables = () => {
   const createMessages = `CREATE TABLE IF NOT EXISTS messages(
               id SERIAL PRIMARY KEY,
               subject VARCHAR(75) NOT NULL,
-              receiver INTEGER NOT NULL REFERENCES users(id),
+              receiver INTEGER NOT NULL ,
               message VARCHAR(255) NOT NULL,
               sender INTEGER NOT NULL REFERENCES users(id),
               status VARCHAR(20) NOT NULL,
@@ -64,34 +64,8 @@ const createTables = () => {
     });
 };
 
-// const dropTables = () => {
-//   const queryText = [
-//     'DROP TABLE IF EXISTS users',
-//     'DROP TABLE IF EXISTS messages',
-//     'DROP TABLE IF EXISTS groups',
-//     'DROP TABLE IF EXISTS members'
-//   ];
-//   pool
-//     .query(queryText)
-//     .then(res => {
-//       console.log(res);
-//       pool.end();
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       pool.end();
-//     });
-// };
-
-// pool.on('remove', () => {
-//   console.log('client removed');
-//   process.exit(0);
-// });
-
 module.exports = {
   createTables
-  // dropTables
 };
-// ('make-runnable');
 
 createTables();
