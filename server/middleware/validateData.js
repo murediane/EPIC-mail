@@ -5,7 +5,7 @@ import { users } from '../models';
 const userValidate = async (req, res, next) => {
   try {
     await validateUser(req.body);
-    let user = await users.find(u => u.email === req.body.email);
+    const user = await users.find(findUser => findUser.email === req.body.email);
     if (!user);
     next();
   } catch (error) {
@@ -15,9 +15,10 @@ const userValidate = async (req, res, next) => {
     return res.status(422).json({ status: 422, message: 'user already exist' });
   }
 };
+
 const validateAuth = async (req, res, next) => {
   try {
-    const user = await users.find(u => u.email === req.body.email);
+    const user = await users.find(findUser => findUser.email === req.body.email);
     if (user);
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (validPassword);
