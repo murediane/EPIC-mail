@@ -15,6 +15,9 @@ const validateUser = user => {
       .required(),
     password: Joi.string()
       .regex(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/)
+      .required(),
+    role: Joi.string()
+      .min(3)
       .required()
   };
   return Joi.validate(user, schema);
@@ -29,6 +32,9 @@ const validateMessage = message => {
       .min(5)
       .required(),
     parentMessageId: Joi.number()
+      .min(1)
+      .required(),
+    receiver: Joi.number()
       .min(1)
       .required(),
     status: Joi.string()

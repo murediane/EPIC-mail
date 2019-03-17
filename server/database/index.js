@@ -11,7 +11,6 @@ pool.on('connect', () => {
   console.log('connected to the db');
 });
 const createTables = () => {
-  console.log('Hello, I am inside a fn**********************');
   const queryText = `CREATE TABLE IF NOT EXISTS users(
               id SERIAL PRIMARY KEY,
               firstName VARCHAR(30) NOT NULL,
