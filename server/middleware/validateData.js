@@ -1,34 +1,5 @@
-import bcrypt from 'bcrypt';
-import { validateUser, validateMessage } from '../helpers/validator';
-import { users } from '../models';
-
-const userValidate = async (req, res, next) => {
-  try {
-    await validateUser(req.body);
-    const user = await users.find(findUser => findUser.email === req.body.email);
-    if (!user);
-    next();
-  } catch (error) {
-    if (error.details) {
-      return res.status(400).json({ status: 400, error: error.details[0].message });
-    }
-    return res.status(422).json({ status: 422, message: 'user already exist' });
-  }
-};
-
-const validateAuth = async (req, res, next) => {
-  try {
-    const user = await users.find(findUser => findUser.email === req.body.email);
-    if (user);
-    const validPassword = await bcrypt.compare(req.body.password, user.password);
-    if (validPassword);
-    next();
-  } catch (error) {
-    return res
-      .status(401)
-      .json({ status: 401, message: 'invalid email or password' });
-  }
-};
+import { validateMessage } from '../helpers/validator';
+// import db from '../database/db';
 
 const validateNewMessage = async (req, res, next) => {
   try {
@@ -40,4 +11,4 @@ const validateNewMessage = async (req, res, next) => {
     }
   }
 };
-export { userValidate, validateAuth, validateNewMessage };
+export { validateNewMessage };
