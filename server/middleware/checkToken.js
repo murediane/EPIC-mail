@@ -16,7 +16,7 @@ const checkToken = (req, res, next) => {
       });
     }
     req.userId = decoded.userId || null;
-    req.userType = decoded.userType || null;
+    req.role = decoded.role || null;
     next();
     return true;
   });
