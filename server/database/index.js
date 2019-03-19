@@ -25,8 +25,10 @@ const createTables = () => {
   const createMessages = `CREATE TABLE IF NOT EXISTS messages(
               id SERIAL PRIMARY KEY,
               subject VARCHAR(75) NOT NULL,
-              receiver INTEGER NOT NULL ,
+              receiverUserId INTEGER  REFERENCES users(id) ,
               message VARCHAR(255) NOT NULL,
+              receiverGroupId  INTEGER  REFERENCES groups(id),
+              parentMessageId INTEGER,
               sender INTEGER NOT NULL REFERENCES users(id),
               status VARCHAR(20) NOT NULL,
               createdOn timestamp NOT NULL DEFAULT now(),
