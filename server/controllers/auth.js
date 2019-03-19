@@ -29,8 +29,6 @@ const createUser = async (req, res) => {
         error: 'you already have an account try to login'
       });
     }
-    // const salt = await bcrypt.genSalt(15);
-    // user.password = await bcrypt.hash(user.password, salt);
 
     const { rows } = await db.query(query, user);
     const token = Jwt.sign(
@@ -48,32 +46,40 @@ const createUser = async (req, res) => {
     });
   } catch (error) {
     // handle every error thrown by the promise rejections
-    // return res.status(500).json({ error });
     console.log({ error });
   }
 };
 const login = async (req, res) => {
   try {
-    const { rows } = await db.query('SELECT * FROM users WHERE email=$1', [
-      req.body.email
-    ]);
-    if (rows.length > 0) {
-      for (let i = 0; i < rows.length; i += 1) {
-        if (bcrypt.compareSync(req.body.password, rows[i].password)) {
-          const token = await Jwt.sign(
-            { useId: rows[i].id, role: rows[i].role },
-            'jwtPrivateKey'
-          );
-          return res.status(200).json({ status: 200, data: [{ token }] });
-        }
+    const {
+      rows: [found = null]
+    } = await db.query('SELECT * FROM users WHERE email=$1', [req.body.email]);
+    if (found) {
+      // const array = [1, 2, 34, 6];
+      // const obj = { name: 'diane', role: 'admin' };
+      // const { name: firstName } = obj;
+      // // console.log(firstName);
+
+      // dest name from obj and keep its value in a constant called firstName
+      // dest the third element and keep its value in a constant called third
+      const { id, role, password } = found;
+      const same = bcrypt.compareSync(req.body.password, password);
+      if (same) {
+        const token = await Jwt.sign({ id, role }, 'jwtPrivateKey');
+        return res.status(200).json({ status: 200, data: { token } });
       }
+      return res.status(400).json({
+        status: 400,
+        error: 'Wrong email or password'
+      });
     }
+    return res.status(400).json({
+      status: 400,
+      error: 'Wrong email or password'
+    });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: 'Something went wrong' });
   }
-  return res.status(400).json({
-    status: 400,
-    error: 'Wrong email or password'
-  });
 };
 export { login, createUser };
