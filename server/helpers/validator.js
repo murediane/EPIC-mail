@@ -37,6 +37,7 @@ const validateMessage = message => {
     receiver: Joi.number()
       .min(1)
       .required(),
+
     status: Joi.string()
       .min(3)
       .required()
