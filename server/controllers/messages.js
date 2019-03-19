@@ -104,7 +104,31 @@ const getSentMessages = async (req, res) => {
     message: 'The message is not found'
   });
 };
-
+const deleteMessage = async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM messages WHERE id=$1', [
+      req.params.id
+    ]);
+    if (!rows) {
+      return res.status(404).json({
+        status: 404,
+        message: 'invalid id'
+      });
+    }
+    const rows1 = await db.query('DELETE FROM messages WHERE id=$1 returning *', [
+      req.params.id
+    ]);
+    return res.status(200).json({
+      status: 200,
+      message: 'message deleted'
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      message: error
+    });
+  }
+};
 // const deleteMessage = (req, res) => {
 //   const { id } = req.params;
 //   const message = messages.find(findMessage => findMessage.id === parseInt(id));
@@ -118,6 +142,6 @@ export {
   getAllReceivedMessages,
   // getUnreadMessages,
   getSentMessages,
-  getMessage
-  // deleteMessage
+  getMessage,
+  deleteMessage
 };
