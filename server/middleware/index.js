@@ -19,7 +19,7 @@ export default server => {
 
   /** ********* RESTful APIs' endpoints ************* */
 
-  server.use('/api/v1', routes);
+  server.use('/api/v2', routes);
 
   /** ********* Error handling ********************** */
 
