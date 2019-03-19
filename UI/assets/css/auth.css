@@ -42,9 +42,9 @@ body {
 
 .modal-header {
   padding: 1rem 0.75rem 0px 0.75rem;
+  
   margin-bottom: 0;
   color: var(--secondary);
-
   font-family: 'sans-serif';
   font-style: italic;
   font-weight: 800;
@@ -162,12 +162,20 @@ body {
   color: var(--secondary);
   text-align: center;
   text-transform: capitalize;
+  color: black;
 }
 
+.local:hover {
+  text-decoration: underline;
+}
 /* Media query for lager screens (computers) */
 
 @media only screen and (min-width: 760px) {
   .modal {
-    width: 10%;
+    width: 60%;
   }
+}
+
+#new-order {
+  margin-top: 5%,
 }

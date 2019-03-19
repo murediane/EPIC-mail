@@ -55,13 +55,6 @@ const login = async (req, res) => {
       rows: [found = null]
     } = await db.query('SELECT * FROM users WHERE email=$1', [req.body.email]);
     if (found) {
-      // const array = [1, 2, 34, 6];
-      // const obj = { name: 'diane', role: 'admin' };
-      // const { name: firstName } = obj;
-      // // console.log(firstName);
-
-      // dest name from obj and keep its value in a constant called firstName
-      // dest the third element and keep its value in a constant called third
       const { id, role, password } = found;
       const same = bcrypt.compareSync(req.body.password, password);
       if (same) {
