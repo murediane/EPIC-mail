@@ -108,11 +108,11 @@ a {
 /**** This is the Header ****/
 
 header {
-  background: whitesmoke;
+  background: white;
   color: #495057;
   padding: 20px;
   padding-top: 25px;
-  min-height: 50px;
+  min-height: 30px;
   border-bottom: #e4dfdf 3px solid;
   overflow: hidden;
   width: 100%;
@@ -155,6 +155,8 @@ header {
   align-items: center;
   flex-direction: row-reverse;
   bottom: 0px;
+  background: white;
+  color: black;
 }
 .user-name {
   position: relative;
@@ -166,6 +168,9 @@ header {
   border-radius: 20px;
   position: relative;
   bottom: 30px;
+  float: left;
+  padding-left: 3200%;
+  padding-top: 150%;
 }
 .dropdown h2 {
   font-size: 15px;
