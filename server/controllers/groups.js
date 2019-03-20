@@ -30,4 +30,22 @@ const createGroups = async (req, res) => {
     message: 'group not created'
   });
 };
-export { createGroups };
+const getAllGroups = async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM groups');
+
+    if (rows.length > 0) {
+      return res.status(200).json({
+        status: 200,
+        data: rows
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return res.status(200).json({
+    status: 200,
+    office: 'No group has been created'
+  });
+};
+export { createGroups, getAllGroups };
