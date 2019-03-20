@@ -44,5 +44,13 @@ const validateMessage = message => {
   };
   return Joi.validate(message, schema);
 };
+const validateGroup = group => {
+  const schema = {
+    groupName: Joi.string()
+      .regex(/^[a-zA-Z ]/)
+      .required()
+  };
+  return Joi.validate(group, schema);
+};
 
-export { validateUser, validateMessage };
+export { validateUser, validateMessage, validateGroup };
