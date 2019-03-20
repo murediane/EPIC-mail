@@ -13,7 +13,7 @@ describe('POST a user', () => {
       .send(fakeUsers)
       .end((err, res) => {
         res.should.be.a('object');
-        res.should.have.status(201);
+        res.should.have.status(201);``
         res.body.should.have.property('data');
 
         done();

@@ -19,5 +19,5 @@ route.get(`${entryPoint}`, checkToken, getAllReceivedMessages);
 // route.get(`${entryPoint}/unread`, getUnreadMessages);
 route.get(`${entryPoint}/sent`, getSentMessages);
 route.get(`${entryPoint}/:id`, getMessage);
-route.delete(`${entryPoint}/:id`, deleteMessage);
+route.delete(`${entryPoint}/:id`, checkToken, deleteMessage);
 export default route;
