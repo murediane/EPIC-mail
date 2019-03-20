@@ -18,6 +18,7 @@ header .header-brand {
   margin: 0 auto;
   text-align: center;
   padding: 20px 0px;
+  opacity: 1;
 }
 
 header nav ul {
