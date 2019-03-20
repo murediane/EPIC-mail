@@ -82,4 +82,34 @@ const updateGroup = async (req, res) => {
     console.log(error);
   }
 };
-export { createGroups, getAllGroups, updateGroup };
+const deleteGroup = async (req, res) => {
+  if (req.user.role !== 'Groupadmin') {
+    return res.status(401).json({
+      error: 'unauthorized access'
+    });
+  }
+  try {
+    const { rows } = await db.query('SELECT * FROM groups WHERE id=$1', [
+      req.params.id
+    ]);
+    if (!rows) {
+      return res.status(404).json({
+        status: 404,
+        message: 'invalid id'
+      });
+    }
+    const rows1 = await db.query('DELETE FROM groups WHERE id=$1 returning *', [
+      req.params.id
+    ]);
+    return res.status(200).json({
+      status: 200,
+      message: 'group deleted'
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      message: error
+    });
+  }
+};
+export { createGroups, getAllGroups, updateGroup, deleteGroup };
