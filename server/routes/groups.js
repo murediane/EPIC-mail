@@ -1,11 +1,13 @@
 import Router from 'express';
 import checkToken from '../middleware/checkToken';
-import { createGroups, getAllGroups } from '../controllers/groups';
+import { validateNewGroup } from '../middleware/validateData';
+import { createGroups, getAllGroups, updateGroup } from '../controllers/groups';
 
 const router = Router();
 const groupEntry = '/groups';
 // create group route
 
-router.post(`${groupEntry}`, checkToken, createGroups);
+router.post(`${groupEntry}`, checkToken, validateNewGroup, createGroups);
 router.get(`${groupEntry}`, checkToken, getAllGroups);
+router.patch(`${groupEntry}/:id`, checkToken, validateNewGroup, updateGroup);
 export default router;
