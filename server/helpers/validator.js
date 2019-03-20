@@ -44,4 +44,5 @@ const validateMessage = message => {
   };
   return Joi.validate(message, schema);
 };
+
 export { validateUser, validateMessage };

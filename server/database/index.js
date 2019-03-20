@@ -38,16 +38,15 @@ const createTables = () => {
               id SERIAL PRIMARY KEY,
               groupName VARCHAR(75) NOT NULL,
               groupOwner INTEGER NOT NULL REFERENCES users(id),
-              memberId INTEGER NOT NULL REFERENCES users(id),
-              role VARCHAR(15),
               createdOn timestamp NOT NULL DEFAULT now(),
-              updatedOn timestamp NOT NULL DEFAULT now()
+              updatedOn timestamp NOT NULL DEFAULT now(),
+              UNIQUE(id)
         )`;
   const createMembers = `CREATE TABLE IF NOT EXISTS members(
               id SERIAL PRIMARY KEY,
               groupId  INTEGER NOT NULL REFERENCES groups(id),
               groupOwner INTEGER NOT NULL REFERENCES users(id),
-              role VARCHAR(15)NOT NULL REFERENCES groups(role),
+              role VARCHAR(15)NOT NULL,
               createdOn timestamp NOT NULL DEFAULT now(),
               updatedOn timestamp NOT NULL DEFAULT now()
         )`;

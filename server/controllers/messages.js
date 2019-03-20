@@ -129,18 +129,10 @@ const deleteMessage = async (req, res) => {
     });
   }
 };
-// const deleteMessage = (req, res) => {
-//   const { id } = req.params;
-//   const message = messages.find(findMessage => findMessage.id === parseInt(id));
-//   if (!message) return res.status(404).send({ msg: 'invalid id' });
-//   const index = messages.indexOf(message);
-//   messages.splice(index, 1);
-//   return res.send({ status: 200, message: 'message deleted' });
-// };
+
 export {
   createMessage,
   getAllReceivedMessages,
-  // getUnreadMessages,
   getSentMessages,
   getMessage,
   deleteMessage
