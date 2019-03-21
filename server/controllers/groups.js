@@ -166,51 +166,44 @@ const addGroupMember = async (req, res) => {
         'member not created,the group id is not valid or the information sent are invalid'
     });
   }
-};
-// const deleteMember = async (req, res) => {
-//   if (req.user.role !== 'Groupadmin') {
-//     return res.status(401).json({
-//       error: 'unauthorized access'
-//     });
-//   }
-//   try {
-//     const { rows: found = null } = await db.query(
-//       'SELECT * FROM members WHERE id=$1',
-//       [req.params.id]
-//     );
-//     if (!found) {
-//       return res.status(404).json({
-//         status: 404,
-//         error: 'invalid id'
-//       });
-//     }
-//     const { groupOwner } = found;
-//     if ({ groupOwner } === req.user.id) {
-//       return res.status(401).json({
-//         status: 401,
-//         error: 'anauthorized action'
-//       });
-//     }
+}
+const sendMessageToGroup= async(req,res)=>{
+  try {
+    const receiver = await db.query('SELECT * FROM groups WHERE id = $1', [
+      req.params.id
+    ]);
+    if (receiver) {
+      console.log(receiver);
+      const text = `INSERT INTO
+    messages("subject","parentmessageid","message",receiverGroupId ,"sender", "status")
+    VALUES($1, $2, $3,$4,$5,$6)
+    returning *`;
 
-//     const rows1 = await db.query('DELETE FROM members WHERE id=$1 returning *', [
-//       req.params.id
-//     ]);
-//     return res.status(200).json({
-//       status: 200,
-//       message: 'member deleted'
-//     });
-//   } catch (error) {
-//     return res.status(500).json({
-//       status: 500,
-//       message: 'You are not allowed to perform this action '
-//     });
-//   }
-// };
-export {
-  createGroups,
-  getAllGroups,
-  updateGroup,
-  deleteGroup,
-  addGroupMember
-  // deleteMember
+      const values = [
+        req.body.subject,
+       req.body.parentMessageId,
+        req.body.message,
+        req.params.id,
+        req.user.id,
+        req.body.status
+      ];
+      const { rows } = await db.query(text, values);
+
+      console.log(rows);
+      if (rows.length > 0) {
+        return res.status(201).json({
+          status: 201,
+          data: rows
+        });
+      }
+    }
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      message: 'something is wrong with the information provided ,please verify and try again'
+    });
+  }
+
 };
+
+export { createGroups, getAllGroups, updateGroup, deleteGroup, addGroupMember,sendMessageToGroup };
