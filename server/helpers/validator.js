@@ -52,5 +52,15 @@ const validateGroup = group => {
   };
   return Joi.validate(group, schema);
 };
-
-export { validateUser, validateMessage, validateGroup };
+const validateMember = member => {
+  const schema = {
+    userId: Joi.number()
+      .min(1)
+      .required(),
+    role: Joi.string()
+      .regex(/^[a-zA-Z ]/)
+      .required()
+  };
+  return Joi.validate(member, schema);
+};
+export { validateUser, validateMessage, validateGroup, validateMember };

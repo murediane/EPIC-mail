@@ -7,11 +7,12 @@
 
 is a messaging platform that allows people to send simple messages to individuals and groups
 
-# Technologies used are :
+# Tools and technologies used are :
 
 Node js/Express
 ESLint
 moocha and chai for testing
+postegres as database
 
 #What is the structure of epic mail
 Epic mail has UI folder that contains the front end that means it includes
@@ -38,16 +39,38 @@ to test if the enpoint works make sure you have node js installed and run npm ru
 
 there is another folder called test
 it contains all the test for the apis
-api Urls
-POST API/V1/auth/signup
-POST api/v1/auth/login  
-POST api/v1/messages  
-Get api/v1/messages
-GET api/v1/messages/:Id
-GET api/v1/messages/sent
-GET api/v1/messages/unread
-delete api/v1/messages/:id
+
+### to get the project
+
+`clone the repository from github green clone buton,`
+`type npm install to bring the project modules/dependencies`
+
+### Starting the server
+
+`npm run server`
+
+### Running the Tests
+
+`npm run test`
+
+### Access to Endpoints
+
+| API Endpoint               | Method & Description     |
+| -------------------------- | ------------------------ |
+| /api/v1/auth/signup        | POST /create a user      |
+| /api/v1/auth/login         | login a user             |
+| /api/v1/messages           | GET all messages         |
+| /api/v1/messages/id        | GET /a specific message  |
+| /api/v1/messages/sent      | GET sent messages        |
+| /api/v1/message/id         | DElete /message          |
+| /api/v2/group/id           | delete an group          |
+| /api/v2/group/id           | PATCH a group            |
+| api/v2/groups              | creategroup              |
+| api/v2/groups/userid/users | add a user to group      |
+| api/v2/group/messages      | send a message to agroup |
 
 # to test the project clone it and install package.json,after run npm run server
 
-the command to run test is: run npm run test
+### Author
+
+Murekatete Diane

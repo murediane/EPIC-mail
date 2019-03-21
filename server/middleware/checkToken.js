@@ -13,6 +13,6 @@ export default async (req, res, next) => {
     return next();
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: 'Something went wrong' });
+    return res.status(500).json({ status: 500, error: 'Something went wrong,you are not authorized to perform this action' });
   }
 };

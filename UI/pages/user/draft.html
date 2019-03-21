@@ -11,31 +11,9 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <div id="branding">
-                <h1>Epic-mail</h1>
-            </div>
-            <div class="top-nav-right">
-                <div class="dropdown">
-                        <h2 class="user-name">diane</h2>
-                        <div class="avatar-cont">
-                          <img
-                            class="user-avatar"
-                            src="../../assets/icons/employee.png"
-                            alt="logo"
-                          />
-                        </div>
-                        <div class="dropdown-content">
-                          <a class="dropdown-item" href="#">profile</a>
-                          <a class="dropdown-item" href="../../index.html">logout</a>
-                        </div>
-                      </div>
-                      </div>
-             
-            </div>
-
-    </header>
-
+        <a class="header-brand" href="index.html"> EPIC mail</a>
+       
+      </header>
     <section id="profile-box">
         <div>
             
@@ -60,7 +38,14 @@
                         </div>
                     </a>
                 </li>
-            
+                <li>
+                    <a href="../../index.html">
+                        <div class="side-option">
+                            <h1>logout</h1>
+                        </div>
+                    </a>
+                </li>
+
 
         </div>
 
@@ -82,7 +67,7 @@
                             <td>
                                     <img
                             class="hover"
-                            src="../../assets/icons/envelope.png"
+                            src="../../assets/icons/gmail_icon.png"
                             alt="lg"
                             title="send message"
                           />
@@ -91,7 +76,7 @@
                                     <img
                                       onclick="openModal('delete-message')"
                                       class="hover"
-                                      src="../../assets/icons/2.png"
+                                      src="../../assets/icons/recycling_recyclebin_empty_delete_trash_1771.png"
                                       alt="lg"
                                       title="delete message"
                                     />
@@ -105,7 +90,7 @@
                             <td>
                                     <img
                             class="hover"
-                            src="../../assets/icons/envelope.png"
+                            src="../../assets/icons/gmail_icon.png"
                             alt="lg"
                             title="send message"
                           />
@@ -114,7 +99,7 @@
                                     <img
                                       onclick="openModal('delete-message')"
                                       class="hover"
-                                      src="../../assets/icons/2.png"
+                                      src="../../assets/icons/recycling_recyclebin_empty_delete_trash_1771.png"
                                       alt="lg"
                                       title="delete message"
                                     />
@@ -128,7 +113,7 @@
                             <td>
                                     <img
                             class="hover"
-                            src="../../assets/icons/envelope.png"
+                            src="../../assets/icons/gmail_icon.png"
                             alt="lg"
                             title="send message"
                           />
@@ -137,7 +122,7 @@
                                     <img
                                       onclick="openModal('delete-message')"
                                       class="hover"
-                                      src="../../assets/icons/2.png"
+                                      src="../../assets/icons/recycling_recyclebin_empty_delete_trash_1771.png"
                                       alt="lg"
                                       title="delete message"
                                     />
@@ -151,7 +136,7 @@
                             <td>
                                     <img
                             class="hover"
-                            src="../../assets/icons/envelope.png"
+                            src="../../assets/icons/gmail_icon.png"
                             alt="lg"
                             title="send message"
                           />
@@ -160,7 +145,7 @@
                                     <img
                                       onclick="openModal('delete-message')"
                                       class="hover"
-                                      src="../../assets/icons/2.png"
+                                      src="../../assets/icons/recycling_recyclebin_empty_delete_trash_1771.png"
                                       alt="lg"
                                       title="delete message"
                                     />
@@ -177,7 +162,7 @@
                             <td>
                                     <img
                             class="hover"
-                            src="../../assets/icons/envelope.png"
+                            src="../../assets/icons/gmail_icon.png"
                             alt="lg"
                             title="send message"
                           />
@@ -186,7 +171,7 @@
                                     <img
                                       onclick="openModal('delete-message')"
                                       class="hover"
-                                      src="../../assets/icons/2.png"
+                                      src="../../assets/icons/recycling_recyclebin_empty_delete_trash_1771.png"
                                       alt="lg"
                                       title="delete message"
                                     />
@@ -225,7 +210,28 @@
               </a>
             </div>
           </section>
-
+ <section class="modal change-dest" id="delete-message">
+            <div class="modal-header">
+              are you sure you want to delete this message
+              <img
+                onclick="closeModal('delete-message')"
+                src="../../assets/icons/2.png"
+                alt="lg"
+                title="Cancel"
+              />
+            </div>
+            <div class="modal-body">
+              
+              <a class="modal-submit" href="#">
+                <img
+                  class="fab-icon"
+                  src="../../assets/icons/2.png "
+                  alt="logo"
+                />
+                <p>delete</p>
+              </a>
+            </div>
+          </section>
     <section class="modal add-new" id="new-order">
         <div class="modal-header">
             Create a new message
