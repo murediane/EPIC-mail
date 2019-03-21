@@ -7,6 +7,9 @@ header {
   width: 100%;
   height: 100px;
 }
+.new_signup{
+  
+}
 
 header .header-brand {
   font-family: Catamaran;
@@ -16,7 +19,7 @@ header .header-brand {
   text-transform: uppercase;
   display: block;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
   padding: 20px 0px;
   opacity: 1;
 }
@@ -31,14 +34,17 @@ header nav ul li {
   display: inline;
   float: left;
   list-style: none;
-  padding: 0 16px;
+  font-weight: 900
+  padding: 0 5px;
+  padding-top: 10px;
 }
 
 header nav ul li a {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 24px;
+  padding-top:10px; 
   font-weight: 200;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   color: #111;
 }
 

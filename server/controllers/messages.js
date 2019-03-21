@@ -31,7 +31,10 @@ const createMessage = async (req, res) => {
       }
     }
   } catch (error) {
-    console.log(error);
+    return res.status(500).json({
+      status: 500,
+      message: 'something is wrong with the information provided ,please verify and try again'
+    });
   }
 };
 const getAllReceivedMessages = async (req, res) => {
@@ -81,16 +84,15 @@ const getMessage = async (req, res) => {
     message: 'Message not found'
   });
 };
-const getSentMessages = async (req, res) => {
+const getAllSentMessages = async (req, res) => {
   try {
-    const { rows } = await db.query('SELECT * FROM messages WHERE receiver = $1', [
+    const { rows } = await db.query('SELECT * FROM messages WHERE sender = $1', [
       req.user.id
     ]);
     if (rows.length > 0) {
-      const message = rows.sta;
       return res.status(200).json({
         status: 200,
-        data: message
+        data: rows
       });
     }
   } catch (error) {
@@ -99,9 +101,9 @@ const getSentMessages = async (req, res) => {
       message: error
     });
   }
-  return res.status(200).json({
-    status: 200,
-    message: 'The message is not found'
+  return res.status(400).json({
+    status:400 ,
+    message: 'you have not sent any messages yet'
   });
 };
 const deleteMessage = async (req, res) => {
@@ -109,7 +111,7 @@ const deleteMessage = async (req, res) => {
     const { rows } = await db.query('SELECT * FROM messages WHERE id=$1', [
       req.params.id
     ]);
-    if (!rows) {
+    if (rows.length === 0) {
       return res.status(404).json({
         status: 404,
         message: 'invalid id'
@@ -118,6 +120,7 @@ const deleteMessage = async (req, res) => {
     const rows1 = await db.query('DELETE FROM messages WHERE id=$1 returning *', [
       req.params.id
     ]);
+    console.log(rows1);
     return res.status(200).json({
       status: 200,
       message: 'message deleted'
@@ -125,15 +128,16 @@ const deleteMessage = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: error
+      message: 'message not deleted '
     });
   }
+  
 };
 
 export {
   createMessage,
   getAllReceivedMessages,
-  getSentMessages,
+  getAllSentMessages,
   getMessage,
   deleteMessage
 };

@@ -24,12 +24,11 @@ const createGroups = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    return res.status(400).json({
+      status: 400,
+      error: 'group not created'
+    });
   }
-  return res.status(200).json({
-    status: 200,
-    message: 'group not created'
-  });
 };
 const getAllGroups = async (req, res) => {
   try {
@@ -46,7 +45,7 @@ const getAllGroups = async (req, res) => {
   }
   return res.status(200).json({
     status: 200,
-    office: 'No group in the database'
+    error: 'No group in the database'
   });
 };
 const updateGroup = async (req, res) => {
@@ -59,10 +58,11 @@ const updateGroup = async (req, res) => {
     const { rows } = await db.query('SELECT * FROM groups WHERE id=$1', [
       req.params.id
     ]);
-    if (!rows) {
+    console.log(rows);
+    if (rows.length === 0) {
       return res.status(404).json({
         status: 404,
-        message: 'invalid id'
+        error: 'invalid id'
       });
     }
 
@@ -75,11 +75,11 @@ const updateGroup = async (req, res) => {
       data: [rows1.rows[0]]
     });
   } catch (error) {
-    // return res.status(500).json({
-    //   status: 500,
-    //   message: error
-    // });
-    console.log(error);
+    return res.status(500).json({
+      status: 500,
+      error: 'unexpected happen'
+    });
+    // console.log(error);
   }
 };
 const deleteGroup = async (req, res) => {
@@ -89,15 +89,24 @@ const deleteGroup = async (req, res) => {
     });
   }
   try {
-    const { rows } = await db.query('SELECT * FROM groups WHERE id=$1', [
-      req.params.id
-    ]);
-    if (!rows) {
+    const { rows: found = null } = await db.query(
+      'SELECT * FROM groups WHERE id=$1',
+      [req.params.id]
+    );
+    if (!found) {
       return res.status(404).json({
         status: 404,
-        message: 'invalid id'
+        error: 'invalid id'
       });
     }
+    const { groupOwner } = found;
+    if ({ groupOwner } === req.user.id) {
+      return res.status(401).json({
+        status: 401,
+        error: 'anauthorized action'
+      });
+    }
+
     const rows1 = await db.query('DELETE FROM groups WHERE id=$1 returning *', [
       req.params.id
     ]);
@@ -108,8 +117,55 @@ const deleteGroup = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: error
+      message: 'You are not allowed to perform this action '
     });
   }
 };
-export { createGroups, getAllGroups, updateGroup, deleteGroup };
+const addGroupMember = async (req, res) => {
+  if (req.user.role !== 'Groupadmin') {
+    return res.status(401).json({
+      error: 'unauthorized access'
+    });
+  }
+  try {
+    const row = await db.query('SELECT * FROM groups WHERE id=$1', [req.params.id]);
+    if (row.length === 0) {
+      return res.status(404).json({
+        status: 404,
+        message: 'invalid id'
+      });
+    }
+    const checkUserId = await db.query('SELECT * FROM users WHERE id=$1', [
+      req.body.userId
+    ]);
+    if (checkUserId === 0) {
+      return res.status(404).json({
+        status: 404,
+        message: 'the user you want to add is not our user.'
+      });
+    }
+    const text = `INSERT INTO
+            members(groupid, groupowner,userid,role)
+            VALUES($1, $2,$3,$4)
+            returning *`;
+
+    const values = [req.params.id, req.user.id, req.body.userId, req.body.role];
+
+    const { rows } = await db.query(text, values);
+
+    if (rows.length > 0) {
+      return res.status(201).json({
+        status: 201,
+        data: rows
+      });
+    }
+  } catch (error) {
+    return res.status(400).json({
+      status: 400,
+      error:
+        'member not created,the group id is not valid or the information sent are invalid'
+    });
+  }
+  
+};
+export { createGroups, getAllGroups, updateGroup, deleteGroup, addGroupMember };

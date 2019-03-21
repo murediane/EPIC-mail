@@ -1,4 +1,9 @@
-import { validateMessage, validateUser, validateGroup } from '../helpers/validator';
+import {
+  validateMessage,
+  validateUser,
+  validateGroup,
+  validateMember
+} from '../helpers/validator';
 
 const validateSignup = async (req, res, next) => {
   try {
@@ -6,7 +11,7 @@ const validateSignup = async (req, res, next) => {
     next();
   } catch (error) {
     if (error.details) {
-      return res.status(400).json({ status: 400, error: error.details[0].message });
+      return res.status(400).json({ status: 400, error: 'invalid input' });
     }
   }
 };
@@ -16,7 +21,7 @@ const validateNewMessage = async (req, res, next) => {
     next();
   } catch (error) {
     if (error.details) {
-      return res.status(400).json({ status: 400, error: error.details[0].message });
+      return res.status(400).json({ status: 400, error: 'invalid input' });
     }
   }
 };
@@ -26,8 +31,19 @@ const validateNewGroup = async (req, res, next) => {
     next();
   } catch (error) {
     if (error.details) {
-      return res.status(400).json({ status: 400, error: error.details[0].message });
+      return res.status(400).json({ status: 400, error: 'invalid input' });
     }
   }
 };
-export { validateNewMessage, validateSignup, validateNewGroup };
+const validateNewMember = async (req, res, next) => {
+  try {
+    await validateMember(req.body);
+    next();
+  } catch (error) {
+    if (error.details) {
+      // return res.status(400).json({ status: 400, error: 'invalid input' });
+      console.log(error.details);
+    }
+  }
+};
+export { validateNewMessage, validateSignup, validateNewGroup, validateNewMember };

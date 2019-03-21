@@ -6,7 +6,7 @@ import {
   getAllReceivedMessages,
   getMessage,
   // getUnreadMessages,
-  getSentMessages,
+  getAllSentMessages,
   deleteMessage
 } from '../controllers/messages';
 
@@ -17,7 +17,7 @@ const entryPoint = '/messages';
 route.post(`${entryPoint}`, checkToken, validateNewMessage, createMessage);
 route.get(`${entryPoint}`, checkToken, getAllReceivedMessages);
 // route.get(`${entryPoint}/unread`, getUnreadMessages);
-route.get(`${entryPoint}/sent`, getSentMessages);
-route.get(`${entryPoint}/:id`, getMessage);
+route.get(`${entryPoint}/sent`, checkToken, getAllSentMessages);
+route.get(`${entryPoint}/:id`, checkToken, getMessage);
 route.delete(`${entryPoint}/:id`, checkToken, deleteMessage);
 export default route;

@@ -46,6 +46,7 @@ const createTables = () => {
               id SERIAL PRIMARY KEY,
               groupId  INTEGER NOT NULL REFERENCES groups(id),
               groupOwner INTEGER NOT NULL REFERENCES users(id),
+              userId INTEGER NOT NULL REFERENCES users(id),
               role VARCHAR(15)NOT NULL,
               createdOn timestamp NOT NULL DEFAULT now(),
               updatedOn timestamp NOT NULL DEFAULT now()
