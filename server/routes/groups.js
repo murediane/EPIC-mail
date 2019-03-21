@@ -18,4 +18,5 @@ router.get(`${groupEntry}`, checkToken, getAllGroups);
 router.patch(`${groupEntry}/:id/name`, checkToken, validateNewGroup, updateGroup);
 router.delete(`${groupEntry}/:id`, checkToken, deleteGroup);
 router.post(`${groupEntry}/:id/users`, checkToken,validateNewMember, addGroupMember);
+// router.delete(`${groupEntry}/:id`, checkToken, deleteGroup);
 export default router;

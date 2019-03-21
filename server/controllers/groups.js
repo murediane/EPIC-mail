@@ -166,6 +166,51 @@ const addGroupMember = async (req, res) => {
         'member not created,the group id is not valid or the information sent are invalid'
     });
   }
-  
 };
-export { createGroups, getAllGroups, updateGroup, deleteGroup, addGroupMember };
+// const deleteMember = async (req, res) => {
+//   if (req.user.role !== 'Groupadmin') {
+//     return res.status(401).json({
+//       error: 'unauthorized access'
+//     });
+//   }
+//   try {
+//     const { rows: found = null } = await db.query(
+//       'SELECT * FROM members WHERE id=$1',
+//       [req.params.id]
+//     );
+//     if (!found) {
+//       return res.status(404).json({
+//         status: 404,
+//         error: 'invalid id'
+//       });
+//     }
+//     const { groupOwner } = found;
+//     if ({ groupOwner } === req.user.id) {
+//       return res.status(401).json({
+//         status: 401,
+//         error: 'anauthorized action'
+//       });
+//     }
+
+//     const rows1 = await db.query('DELETE FROM members WHERE id=$1 returning *', [
+//       req.params.id
+//     ]);
+//     return res.status(200).json({
+//       status: 200,
+//       message: 'member deleted'
+//     });
+//   } catch (error) {
+//     return res.status(500).json({
+//       status: 500,
+//       message: 'You are not allowed to perform this action '
+//     });
+//   }
+// };
+export {
+  createGroups,
+  getAllGroups,
+  updateGroup,
+  deleteGroup,
+  addGroupMember
+  // deleteMember
+};

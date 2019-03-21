@@ -22,6 +22,14 @@ const createTables = () => {
               updatedAt timestamp NOT NULL DEFAULT now(),
               UNIQUE(email)
           )`;
+          const createGroups = `CREATE TABLE IF NOT EXISTS groups(
+            id SERIAL PRIMARY KEY,
+            groupName VARCHAR(75) NOT NULL,
+            groupOwner INTEGER NOT NULL REFERENCES users(id),
+            createdOn timestamp NOT NULL DEFAULT now(),
+            updatedOn timestamp NOT NULL DEFAULT now(),
+            UNIQUE(id)
+      )`;
   const createMessages = `CREATE TABLE IF NOT EXISTS messages(
               id SERIAL PRIMARY KEY,
               subject VARCHAR(75) NOT NULL,
@@ -34,14 +42,7 @@ const createTables = () => {
               createdOn timestamp NOT NULL DEFAULT now(),
               updatedOn timestamp NOT NULL DEFAULT now()
           )`;
-  const createGroups = `CREATE TABLE IF NOT EXISTS groups(
-              id SERIAL PRIMARY KEY,
-              groupName VARCHAR(75) NOT NULL,
-              groupOwner INTEGER NOT NULL REFERENCES users(id),
-              createdOn timestamp NOT NULL DEFAULT now(),
-              updatedOn timestamp NOT NULL DEFAULT now(),
-              UNIQUE(id)
-        )`;
+  
   const createMembers = `CREATE TABLE IF NOT EXISTS members(
               id SERIAL PRIMARY KEY,
               groupId  INTEGER NOT NULL REFERENCES groups(id),
