@@ -31,10 +31,12 @@ const createMessage = async (req, res) => {
       }
     }
   } catch (error) {
-    return res.status(500).json({
-      status: 500,
-      message: 'something is wrong with the information provided ,please verify and try again'
-    });
+    //   return res.status(500).json({
+    //     status: 500,
+    //     message: 'something is wrong with the information provided ,please verify and try again'
+    //   });
+    // }
+    console.log(error);
   }
 };
 const getAllReceivedMessages = async (req, res) => {
@@ -102,7 +104,7 @@ const getAllSentMessages = async (req, res) => {
     });
   }
   return res.status(400).json({
-    status:400 ,
+    status: 400,
     message: 'you have not sent any messages yet'
   });
 };
@@ -131,7 +133,6 @@ const deleteMessage = async (req, res) => {
       message: 'message not deleted '
     });
   }
-  
 };
 
 export {
