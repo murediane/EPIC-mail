@@ -41,6 +41,16 @@ const fakeLogin2 = {
   password: 'diane123',
   firstName: 'Gloria'
 };
+const fakeGroups = {
+  groupName: 'firstGroup'
+};
+const fakeGroups1 = {
+  id: 1,
+  groupname: 'newone',
+  groupowner: 12,
+  createdon: '2019-04-10T18:01:11.083Z',
+  updatedon: '2019-04-10T18:01:11.083Z'
+};
 export {
   fakeMessages,
   fakeMessages2,
@@ -48,5 +58,7 @@ export {
   fakeLogin,
   fakeMessages3,
   fakeUsers2,
-  fakeLogin2
+  fakeLogin2,
+  fakeGroups,
+  fakeGroups1
 };

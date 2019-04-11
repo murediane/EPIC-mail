@@ -59,7 +59,7 @@ const getAllReceivedMessages = async (req, res) => {
   }
   return res.status(200).json({
     status: 200,
-    message: 'there is no received messages'
+    message: 'there are no received messages'
   });
 };
 
