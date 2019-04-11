@@ -10,7 +10,7 @@ services:
   - postgresql
 before_install:
   - psql -c 'create database epic_mail_test' -U postgres
-  - psql -c "CREATE USER $USER WITH ENCRYPTED PASSWORD '$PASSWORD';" -U postgres
+  - psql -c "CREATE USER $USER WITH ENCRYPTED PASSWORD '$PASSWORD' GRANT ALL PRIVILEGES ON DATABASE epic_mail_test TO $USER  ;" -U postgres
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
