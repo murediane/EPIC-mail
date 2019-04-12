@@ -1,7 +1,0 @@
-
-test:
-  adapter: postgresql
-  database: travis_ci_testbefore_script:
-  
-before_script:
-  - cp config/database.yml.travis config/database.yml

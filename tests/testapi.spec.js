@@ -118,7 +118,6 @@ describe('message', () => {
 
         .send(fakeMessages3)
         .end((err, res) => {
-          console.log(res.body);
           res.should.have.status(401);
           res.body.should.have.property('error', 'unauthorized access');
           done();
