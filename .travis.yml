@@ -4,10 +4,15 @@ node_js:
 cache:
   directories:
     - 'node_modules'
+addons:
+  postgresql: '9.6'
+services:
+  - postgresql
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+  - npm run db
 script:
   - npm test
 after_script:

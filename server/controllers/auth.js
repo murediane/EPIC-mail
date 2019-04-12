@@ -24,8 +24,8 @@ const createUser = async (req, res) => {
     ]);
 
     if (checkUser.rows.length > 0) {
-      return res.status(422).json({
-        status: 422,
+      return res.status(409).json({
+        status: 409,
         error: 'you already have an account try to login'
       });
     }

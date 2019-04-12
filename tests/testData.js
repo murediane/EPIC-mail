@@ -4,6 +4,7 @@ const fakeMessages = {
   subject: 'Greetings',
   message: 'hello my friend',
   parentMessageId: 1,
+  receiver: 1,
   status: 'sent'
 };
 
@@ -11,6 +12,7 @@ const fakeMessages2 = {
   subject: 'Greetings',
   message: 'hello my friend',
   parentMessageId: 1,
+  receiver: 1,
   status: 'sent'
 };
 const fakeMessages3 = {
@@ -23,7 +25,8 @@ const fakeUsers = {
   email: 'murediana@gmail.com',
   firstName: 'Gloria',
   lastName: 'atete',
-  password: 'Diane123'
+  password: 'Diane123',
+  role: 'Groupadmin'
 };
 const fakeUsers2 = {
   email: 'murediana@gmail.com',
@@ -38,6 +41,16 @@ const fakeLogin2 = {
   password: 'diane123',
   firstName: 'Gloria'
 };
+const fakeGroups = {
+  groupName: 'firstGroup'
+};
+const fakeGroups1 = {
+  id: 1,
+  groupname: 'newone',
+  groupowner: 12,
+  createdon: '2019-04-10T18:01:11.083Z',
+  updatedon: '2019-04-10T18:01:11.083Z'
+};
 export {
   fakeMessages,
   fakeMessages2,
@@ -45,5 +58,7 @@ export {
   fakeLogin,
   fakeMessages3,
   fakeUsers2,
-  fakeLogin2
+  fakeLogin2,
+  fakeGroups,
+  fakeGroups1
 };
