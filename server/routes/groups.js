@@ -11,7 +11,8 @@ import {
   updateGroup,
   deleteGroup,
   addGroupMember,
-  sendMessageToGroup
+  sendMessageToGroup,
+  deleteMember
 } from '../controllers/groups';
 
 const router = Router();
@@ -24,4 +25,5 @@ router.patch(`${groupEntry}/:id/name`, checkToken, validateNewGroup, updateGroup
 router.delete(`${groupEntry}/:id`, checkToken, deleteGroup);
 router.post(`${groupEntry}/:id/users`,checkToken,validateNewMember, addGroupMember);
 router.post(`${groupEntry}/:id/message`, checkToken, validateNewMessage, sendMessageToGroup);
+router.delete(`${groupEntry}/:groupId/users/:userId`, checkToken, deleteMember);
 export default router;

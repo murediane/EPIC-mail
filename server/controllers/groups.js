@@ -204,12 +204,45 @@ const sendMessageToGroup = async (req, res) => {
     });
   }
 };
-
+const deleteMember = async (req, res) => {
+  if (req.user.role !== 'Groupadmin') {
+    return res.status(401).json({
+      error: 'unauthorized access'
+    });
+  }
+  try {
+    const { rows } = await db.query(
+      'SELECT * FROM members WHERE groupId=$1 AND userId=$2',
+      [req.params.groupId, req.params.userId]
+    );
+    if (!rows.length === 0) {
+      return res.status(404).json({
+        status: 404,
+        message: 'invalid id'
+      });
+    }
+    const rows1 = await db.query(
+      'DELETE FROM members WHERE groupId=$1 AND userId=$2',
+      [req.params.groupId, req.params.userId]
+    );
+    console.log(rows1);
+    return res.status(200).json({
+      status: 200,
+      message: 'member deleted'
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      message: 'member not deleted '
+    });
+  }
+};
 export {
   createGroups,
   getAllGroups,
   updateGroup,
   deleteGroup,
   addGroupMember,
-  sendMessageToGroup
+  sendMessageToGroup,
+  deleteMember
 };
