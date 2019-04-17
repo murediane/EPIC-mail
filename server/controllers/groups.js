@@ -162,12 +162,11 @@ const addGroupMember = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       status: 400,
-      error:
-        'member not created,the group id is not valid or the information sent are invalid'
+      error: 'member not created, the information sent are invalid'
     });
   }
-}
-const sendMessageToGroup= async(req,res)=>{
+};
+const sendMessageToGroup = async (req, res) => {
   try {
     const receiver = await db.query('SELECT * FROM groups WHERE id = $1', [
       req.params.id
@@ -181,7 +180,7 @@ const sendMessageToGroup= async(req,res)=>{
 
       const values = [
         req.body.subject,
-       req.body.parentMessageId,
+        req.body.parentMessageId,
         req.body.message,
         req.params.id,
         req.user.id,
@@ -200,10 +199,17 @@ const sendMessageToGroup= async(req,res)=>{
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: 'something is wrong with the information provided ,please verify and try again'
+      message:
+        'something is wrong with the information provided ,please verify and try again'
     });
   }
-
 };
 
-export { createGroups, getAllGroups, updateGroup, deleteGroup, addGroupMember,sendMessageToGroup };
+export {
+  createGroups,
+  getAllGroups,
+  updateGroup,
+  deleteGroup,
+  addGroupMember,
+  sendMessageToGroup
+};
