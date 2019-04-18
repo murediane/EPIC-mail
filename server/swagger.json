@@ -10,7 +10,7 @@
     }
   },
   "host": "localhost:3000",
-  "basePath": "/api/v1",
+  "basePath": "/api/v2",
   "tags": [
     {
       "name": "Messages",
@@ -23,6 +23,14 @@
     {
       "name": "user",
       "description": "API for the signup in the application"
+    },
+    {
+      "name": "members",
+      "description": "API for the member in the application"
+    },
+    {
+      "name": "groups",
+      "description": "API for the member in the application"
     }
   ],
   "schemes": ["http"],
@@ -31,7 +39,7 @@
   "paths": {
     "/messages": {
       "post": {
-        "tags": ["message"],
+        "tags": ["messages"],
         "description": "Create new message in system",
         "parameters": [
           {
@@ -90,7 +98,7 @@
       },
       "delete": {
         "summary": "Delete message with given ID",
-        "tags": ["message"],
+        "tags": ["messages"],
         "responses": {
           "200": {
             "description": "message is deleted",
@@ -102,7 +110,7 @@
       }
     },
 
-    "/auth": {
+    "/auth/login": {
       "post": {
         "tags": ["login"],
         "description": "Create new login in system",
@@ -127,7 +135,7 @@
         }
       }
     },
-    "authentication": {
+    "auth/signup": {
       "post": {
         "tags": ["signup"],
         "description": "Create new user in system",
@@ -147,6 +155,116 @@
             "description": "New user  is created",
             "schema": {
               "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+
+    "/groups/{groupId}/users": {
+      "post": {
+        "tags": ["members"],
+        "description": "Create new member in system",
+        "parameters": [
+          {
+            "name": "add member",
+            "in": "body",
+            "description": "member that we want to create",
+            "schema": {
+              "$ref": "#/definitions/member"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New member  is created",
+            "schema": {
+              "$ref": "#/definitions/member"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete member with given ID",
+        "tags": ["members"],
+        "responses": {
+          "200": {
+            "description": "member is deleted",
+            "schema": {
+              "$ref": "#/definitions/member"
+            }
+          }
+        }
+      }
+    },
+    "/groups": {
+      "post": {
+        "tags": ["groups"],
+        "description": "Create new group in system",
+        "parameters": [
+          {
+            "name": "groups",
+            "in": "body",
+            "description": "group that we want to create",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New group is created",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["groups"],
+        "summary": "Get all groups in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}": {
+      "parameters": [
+        {
+          "name": "groupsId",
+          "in": "path",
+          "required": true,
+          "description": "ID of group that we want to find",
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "tags": ["groups"],
+        "summary": "Get message with given ID",
+        "responses": {
+          "200": {
+            "description": "message is update",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete group with given ID",
+        "tags": ["groups"],
+        "responses": {
+          "200": {
+            "description": "group is deleted",
+            "schema": {
+              "$ref": "#/definitions/groups"
             }
           }
         }
@@ -203,6 +321,34 @@
     "Messages": {
       "type": "array",
       "$ref": "#/definitions/message"
+    },
+    "member": {
+      "required": ["member", "_id"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "groupId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "type": "string"
+      },
+
+      "message": {
+        "type": "string"
+      }
+    },
+
+    "Member": {
+      "type": "array",
+      "$ref": "#/definitions/members"
     }
   }
 }

@@ -7,11 +7,11 @@
 
 is a messaging platform that allows people to send simple messages to individuals and groups
 
-# Tools and technologies used are :
+# Tools and technologies used  :
 
 Node js/Express
 ESLint
-moocha and chai for testing
+mocha and chai for testing
 postegres as database
 
 #What is the structure of epic mail
@@ -21,14 +21,14 @@ Epic mail has UI folder that contains the front end that means it includes
 -javascript
 -and images
 It also has a Server folder that contains the endpoints
-the servers subfolder are
+the servers sub-folders are
 -config
 it contains the general configuration
 -controller
 contains handle functions
 -helpers
 contains validation of the objects
--midleware
+-middleware
 contains error handling,api route configuration and header configuration
 -models
 contains database or data structure containing data
@@ -43,7 +43,6 @@ it contains all the test for the apis
 ### to get the project
 
 `clone the repository from github green clone buton,`
-`type npm install to bring the project modules/dependencies`
 
 ### Starting the server
 
@@ -69,7 +68,7 @@ it contains all the test for the apis
 | api/v2/groups/userid/users | add a user to group      |
 | api/v2/group/messages      | send a message to agroup |
 
-# to test the project clone it and install package.json,after run npm run server
+
 
 ### Author
 

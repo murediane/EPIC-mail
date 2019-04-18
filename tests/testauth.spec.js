@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../server';
 import db from '../server/database/db';
-import { fakeUsers, fakeLogin, fakeUsers2, fakeLogin2 } from './testData';
+import { fakeUsers, fakeLogin, fakeUsers2, fakeLogin2 ,fakeLogin1} from './testData';
 
 const should = chai.should();
 chai.use(chaiHttp);
@@ -73,6 +73,21 @@ describe('POST an invalid login', () => {
       .send(fakeLogin2)
       .end((err, res) => {
         res.should.have.status(400);
+        done();
+      });
+  });
+});
+describe('POST reset password', () => {
+  it(' it should return a valid object', done => {
+    chai
+      .request(server)
+      .post('/api/V2/auth/reset')
+      .send(fakeLogin1)
+      .end((err, res) => {
+        res.should.be.a('object');
+        res.should.have.status(200);
+        res.body.should.have.property('message');
+
         done();
       });
   });
