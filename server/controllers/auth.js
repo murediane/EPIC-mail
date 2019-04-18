@@ -75,4 +75,24 @@ const login = async (req, res) => {
     return res.status(500).json({ message: 'Something went wrong' });
   }
 };
-export { login, createUser };
+const resetPassword = async (req, res) => {
+  try {
+    const {
+      rows: [found = null]
+    } = await db.query('SELECT * FROM users WHERE email=$1', [req.body.email]);
+    if (found) {
+      return res
+        .status(200)
+        .json({
+          status: 200,
+          message: 'check your email for the reset password link'
+        });
+    }
+  } catch (error) {
+    return res.status(400).json({
+      status: 400,
+      error: 'Wrong email '
+    });
+  }
+};
+export { login, createUser, resetPassword };
