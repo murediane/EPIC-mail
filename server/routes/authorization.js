@@ -5,7 +5,7 @@ const router = Router();
 const entry = '/auth';
 // create authentication route
 
-router.post(`${entry}/signup`, validateSignup, createUser);
+router.post(`${entry}/signup`, createUser);
 router.post(`${entry}/login`, login);
 router.post(`${entry}/reset`, resetPassword);
 export default router;
