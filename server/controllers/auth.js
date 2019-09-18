@@ -55,10 +55,20 @@ const login = async (req, res) => {
       rows: [found = null]
     } = await db.query('SELECT * FROM users WHERE email=$1', [req.body.email]);
     if (found) {
-      const { id, role, password } = found;
+      const {
+        id, role, password, firstname, lastname
+      } = found;
       const same = bcrypt.compareSync(req.body.password, password);
       if (same) {
-        const token = await Jwt.sign({ id, role }, 'jwtPrivateKey');
+        const token = await Jwt.sign(
+          {
+            id,
+            role,
+            firstname,
+            lastname
+          },
+          'jwtPrivateKey'
+        );
         return res.status(200).json({ status: 200, data: { token } });
       }
       return res.status(400).json({
@@ -81,12 +91,10 @@ const resetPassword = async (req, res) => {
       rows: [found = null]
     } = await db.query('SELECT * FROM users WHERE email=$1', [req.body.email]);
     if (found) {
-      return res
-        .status(200)
-        .json({
-          status: 200,
-          message: 'check your email for the reset password link'
-        });
+      return res.status(200).json({
+        status: 200,
+        message: 'check your email for the reset password link'
+      });
     }
   } catch (error) {
     return res.status(400).json({
